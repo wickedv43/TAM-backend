@@ -1,0 +1,209 @@
+en:
+  buttons:
+    confirm: "✅ Confirm"
+    edit: "⬅️ Edit"
+    cancel: "Cancel"
+    reply: "Reply"
+    open_deals: "📋 Open Deals"
+    open_deal: "📋 Open Deal"
+    open_web_app: "Open Web App"
+
+  general:
+    start: |
+      *Welcome to TAM Bot\!* 👋
+
+      Your personal assistant for managing *advertising deals* on Telegram channels\.
+
+      *Main features:*
+      📋 Create and manage deals
+      📢 Publish posts to channels
+      📊 Track deal status
+      💰 Manage your balance
+
+    default_menu: |
+      *Main Menu* 📱
+
+      Please use the menu or Web App to interact with the bot\.
+
+      *Available actions:*
+      📋 View your deals
+      💰 Check balance
+      📢 Manage channels
+
+  dialog:
+    send_message: |
+      *💬 Send Your Message*
+
+      *Deal:* `{{.DealID}}`
+      *Channel:* {{.ChannelName}}
+
+      Type your message for this deal and send it\.
+      You can cancel anytime using the button below\.
+
+    received_from_manager: |
+      *💬 Message from Channel Manager*
+      *Channel:* {{.ChannelName}}
+
+      {{.MessageText}}
+
+    received_from_advertiser: |
+      *💬 Message from Advertiser*
+
+      {{.MessageText}}
+
+    message_sent: "✅ Message sent"
+
+    send_post: |
+      *📝 Send Post Content*
+
+      *Deal:* `{{.DealID}}`
+      *Channel:* {{.ChannelName}}
+
+      Send the post exactly as it should appear in the channel
+
+      *What you can send:*
+      ✅ Text
+      ✅ Photo or video with caption
+      ✅ Album \(2\-10 media\) with caption
+
+      You’ll be able to review everything before confirming\.
+
+      💡 Made a mistake? Just send a new post it will replace the previous one\.
+
+    send_another_post: |
+      *📄 Edit*
+
+      Please send a new post when ready\.
+      The previous preview has been removed\.
+
+  post:
+    preview: |
+      🧐 *Preview your post*
+      This is how the post will look in the channel\.
+    saved: "*✅ Post saved successfully\\!*"
+
+  deal:
+    published: |
+      *🎉 Post Published Successfully\!*
+
+      *Deal ID:* `{{.DealID}}`
+      *Channel:* {{.ChannelName}}
+      *Post until:* {{.CommonDeadline}}
+      *Don't post until:* {{.TopDeadline}}
+
+      📱 [Check your post]({{.PostLink}})
+
+    violated_posted: |
+      *⚠️ Deal Violation Detected*
+
+      *Deal ID:* `{{.DealID}}`
+      *Reason:* Someone posted within {{.LockHours}} hours
+
+      The deal has been marked as *TERMS\_VIOLATED*\.
+
+    violated_edited: |
+      *⚠️ Deal Violation Detected*
+
+      *Deal ID:* `{{.DealID}}`
+      *Reason:* Post was edited or deleted
+
+      The deal has been marked as *TERMS\_VIOLATED*\.
+
+    violated: |
+      *⚠️ Deal Violation*
+
+      *Deal ID:* `{{.DealID}}`
+      *Reason:* {{.Reason}}
+
+    err_publish_advertiser: |
+      *❌ Publication Failed*
+
+      Your post could not be published\.
+      💰 Money will be *refunded automatically*\.
+
+    err_publish_manager: |
+      *❌ Publication Failed*
+
+      The post could not be published to your channel\.
+
+    get_deal_data_info: |
+      *📋 Deal Info*
+
+      *Deal ID:* `{{.DealID}}`
+      *Channel:* {{.ChannelName}}
+      *Status:* {{.Status}}
+      *Type:* {{.TargetType}}
+      *Price:* {{.PriceSpoiler}}
+
+      Deal post below ↘️
+    get_deal_data_no_post: |
+      Post content has not been added yet\.
+
+  notification:
+    new_incoming_deal: |
+      *🔔 New Incoming Deal\!*
+
+      *Deal ID:* `{{.DealID}}`
+      *Type:* {{.DealType}}
+      *Price:* {{.PriceSpoiler}}
+
+      Please *review and accept* the deal\.
+
+    deal_accepted: |
+      *✅ Deal Accepted\!*
+
+      *Deal ID:* `{{.DealID}}`
+      *Channel:* {{.ChannelName}}
+
+      Great news\! Your deal has been *accepted* by the channel manager\! 🎉
+
+    time_proposed: |
+      *📅 Publication Time Proposed*
+
+      *Deal ID:* `{{.DealID}}`
+      *Channel:* {{.ChannelName}}
+      *Time:* {{.PublicationTime}}
+
+      The channel manager has proposed a publication time\. Please *approve or decline* in the Web App\.
+
+    time_declined: |
+      *⏰ Proposed Time Declined*
+
+      *Deal ID:* `{{.DealID}}`
+      *Channel:* {{.ChannelName}}
+
+      The proposed publication time was declined\. First *discuss all details in the chat*, then propose a time that works for both sides\.
+
+    post_scheduled: |
+      *📅 Post Scheduled\!*
+
+      *Deal ID:* `{{.DealID}}`
+      *Channel:* {{.ChannelName}}
+      *Scheduled for:* {{.PublicationTime}}
+
+      The post has been scheduled and will be published automatically at the specified time\.
+
+    deal_revision_requested: |
+      *🔄 Deal Revision Requested*
+
+      *Deal ID:* `{{.DealID}}`
+
+      The other party has requested to *revise* the deal details\.
+
+      Please discuss the changes and update accordingly\.
+
+    refund: |
+      *💰 Deal Refund*
+
+      *Deal ID:* `{{.DealID}}`
+      *Status:* {{.Status}}
+
+      *Refunded amount:* {{.AmountSpoiler}}
+
+    deal_completed: |
+      *✅ Deal Completed\!*
+
+      *Deal ID:* `{{.DealID}}`
+      *Channel:* {{.ChannelName}}
+
+      Payment has been transferred\. You can now *delete the post* from the channel\.

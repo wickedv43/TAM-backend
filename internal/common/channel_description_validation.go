@@ -1,0 +1,6 @@
+package common
+
+const (
+	MIN_DESCRIPTION_LENGTH = 0
+	MAX_DESCRIPTION_LENGTH = 400
+)

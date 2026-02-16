@@ -1,0 +1,437 @@
+[
+  {
+    "code": "ar",
+    "name": "Arabic",
+    "nativeName": "العربية",
+    "official": true,
+    "rtl": true,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ]
+  },
+  {
+    "code": "be",
+    "name": "Belarusian",
+    "nativeName": "Беларуская",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "ca",
+    "name": "Catalan",
+    "nativeName": "Català",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "cs",
+    "name": "Czech",
+    "nativeName": "Čeština",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ]
+  },
+  {
+    "code": "de",
+    "name": "German",
+    "nativeName": "Deutsch",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "en",
+    "name": "English",
+    "nativeName": "English",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "es",
+    "name": "Spanish",
+    "nativeName": "Español",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "fa",
+    "name": "Persian",
+    "nativeName": "فارسی",
+    "official": true,
+    "rtl": true,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ]
+  },
+  {
+    "code": "fi",
+    "name": "Finnish",
+    "nativeName": "Suomi",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ]
+  },
+  {
+    "code": "fr",
+    "name": "French",
+    "nativeName": "Français",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "he",
+    "name": "Hebrew",
+    "nativeName": "עברית",
+    "official": true,
+    "rtl": true,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "macos"
+    ]
+  },
+  {
+    "code": "hr",
+    "name": "Croatian",
+    "nativeName": "Hrvatski",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "hu",
+    "name": "Hungarian",
+    "nativeName": "Magyar",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ]
+  },
+  {
+    "code": "id",
+    "name": "Indonesian",
+    "nativeName": "Bahasa Indonesia",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "web"
+    ]
+  },
+  {
+    "code": "it",
+    "name": "Italian",
+    "nativeName": "Italiano",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "kk",
+    "name": "Kazakh",
+    "nativeName": "Қазақша",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "ko",
+    "name": "Korean",
+    "nativeName": "한국어",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "web"
+    ]
+  },
+  {
+    "code": "ms",
+    "name": "Malay",
+    "nativeName": "Bahasa Melayu",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "nb",
+    "name": "Norwegian (Bokmål)",
+    "nativeName": "Norsk (Bokmål)",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ]
+  },
+  {
+    "code": "nl",
+    "name": "Dutch",
+    "nativeName": "Nederlands",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "pl",
+    "name": "Polish",
+    "nativeName": "Polski",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "pt-br",
+    "name": "Portuguese (Brazil)",
+    "nativeName": "Português (Brasil)",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "ro",
+    "name": "Romanian",
+    "nativeName": "Română",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  {
+    "code": "ru",
+    "name": "Russian",
+    "nativeName": "Русский",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "sk",
+    "name": "Slovak",
+    "nativeName": "Slovenčina",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  {
+    "code": "sr",
+    "name": "Serbian",
+    "nativeName": "Српски",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "sv",
+    "name": "Swedish",
+    "nativeName": "Svenska",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  {
+    "code": "tr",
+    "name": "Turkish",
+    "nativeName": "Türkçe",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "uk",
+    "name": "Ukrainian",
+    "nativeName": "Українська",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "tdesktop",
+      "macos",
+      "web"
+    ]
+  },
+  {
+    "code": "uz",
+    "name": "Uzbek",
+    "nativeName": "O'zbek",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios",
+      "web"
+    ]
+  },
+  {
+    "code": "vi",
+    "name": "Vietnamese",
+    "nativeName": "Tiếng Việt",
+    "official": true,
+    "rtl": false,
+    "beta": false,
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+]

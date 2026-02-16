@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "name": "Fashion"
+  },
+  {
+    "id": "2",
+    "name": "Beauty"
+  },
+  {
+    "id": "3",
+    "name": "Travel"
+  },
+  {
+    "id": "4",
+    "name": "Food"
+  },
+  {
+    "id": "5",
+    "name": "Technology"
+  },
+  {
+    "id": "6",
+    "name": "Health"
+  },
+  {
+    "id": "7",
+    "name": "Sports"
+  },
+  {
+    "id": "8",
+    "name": "Entertainment"
+  }
+]

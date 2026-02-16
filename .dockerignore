@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+
+# Env and secrets
+.env
+.env.*
+!.env.example
+
+# Build artifacts
+bin/
+*.exe
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Test & scripts
+test/
+*_test.go
+coverage.out
+scripts/
+
+# Docs (optional, uncomment if not needed in image)
+# docs/
+
+# Misc
+*.md
+!README.md
+Taskfile.yml
+Dockerfile
+docker-compose*.yml
+.dockerignore

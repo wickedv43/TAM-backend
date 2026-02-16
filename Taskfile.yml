@@ -1,0 +1,217 @@
+version: '3'
+
+dotenv: ['.env']
+tasks:
+  run:
+    desc: run server
+    cmds:
+      - echo "Starting server"
+      - go run ./cmd/backend/.
+
+  userbot:
+    desc: start user-bot
+    cmds:
+      - go run ./cmd/stat_bot/cmd/.
+
+
+
+  create-docker:
+    desc: build database for local tests
+    cmds:
+      - echo "Creating docker"
+      - docker run --name my-postgres -e POSTGRES_USER=username -e POSTGRES_PASSWORD=password -e POSTGRES_DB=admarket -p 5432:5432 -d postgres
+
+  start:
+    desc: Create Docker with db and run server
+    cmds:
+      - task: create-docker
+      - task: run
+
+  ent-create:
+    desc: create new ent schema
+    cmds:
+      - go run -mod=mod entgo.io/ent/cmd/ent new {{.CLI_ARGS}}
+    dir: ./internal/database/ent
+
+
+  gen-ts:
+    desc: run server
+    cmds:
+      - echo "generating ts types"
+      - go run ./cmd/tsgen/.
+
+  gen-swagger:
+    desc: generate swagger
+    cmds:
+      - swag init -g cmd/backend/main.go --parseDependency --parseInternal
+
+  gen-ent:
+    desc: generate ent code
+    cmds:
+      - go generate ./internal/database/ent
+
+  gen-enums:
+    desc: generate enums from pkg/constants
+    cmds:
+      - |
+        echo "Generating enums..."
+        failed=0
+        for file in $(find ./internal/common/constants -type f -name "*.go" -exec grep -l "ENUM(" {} +); do
+          echo "Processing $file..."
+          if ! go run github.com/abice/go-enum --mustparse --noprefix --values --nocamel --sql --file "$file"; then
+            echo "Error processing $file"
+            failed=1
+          fi
+        done
+        if [ "$failed" -eq 1 ]; then
+          echo "Enum generation completed with errors"
+          exit 1
+        else
+          echo "Enum generation completed successfully"
+        fi
+
+  gen:
+    desc: generate ent code and enums
+    cmds:
+      - task: gen-ent
+      - task: gen-enums
+      - task: gen-ts
+      - task: gen-swagger
+
+  tidy:
+    desc: tidy go mod
+    cmds:
+      - go mod tidy
+    
+  # Migration commands
+  migrate-up:
+    desc: apply all pending migrations
+    dir: ./internal/database/migrations/postgres
+    cmds:
+      - go run github.com/pressly/goose/v3/cmd/goose postgres "${DATABASE_DSN}" up
+
+  migrate-down:
+    desc: rollback last migration
+    dir: ./internal/database/migrations/postgres
+    cmds:
+      - go run github.com/pressly/goose/v3/cmd/goose postgres "${DATABASE_DSN}" down
+
+  migrate-status:
+    desc: show migration status
+    dir: ./internal/database/migrations/postgres
+    cmds:
+      - go run github.com/pressly/goose/v3/cmd/goose postgres "${DATABASE_DSN}" status
+
+  migrate-reset:
+    desc: rollback all migrations
+    dir: ./internal/database/migrations/postgres
+    cmds:
+      - go run github.com/pressly/goose/v3/cmd/goose postgres "${DATABASE_DSN}" reset
+
+  migrate-create:
+    desc: create new migration (usage - task migrate-create -- migration_name)
+    dir: ./internal/database/migrations/postgres
+    cmds:
+      - go run github.com/pressly/goose/v3/cmd/goose postgres "${DATABASE_DSN}" create {{.CLI_ARGS}} sql
+
+  migrate-rerun:
+    desc: reset and reapply all migrations
+    cmds:
+      - task: migrate-reset
+      - task: migrate-up
+
+  db-remove:
+    desc: stop and remove postgres container
+    cmds:
+      - docker rm -f my-postgres || true
+
+  restart:
+    desc: full restart - remove db, recreate and apply migrations with mock data
+    cmds:
+      - task: db-remove
+      - task: create-docker
+      - sleep 3
+      - task: migrate-up
+      - task: run
+
+
+
+
+
+
+
+# build push delpoy?
+  build:
+    desc: Сборка frontend и backend образов
+    cmds:
+      - echo "🚀 Backend build"
+      - docker buildx build --platform linux/amd64 -t {{.BACKEND}}:latest --output type=docker .
+      #- echo "🚀 Сборка фронта"
+      #- docker buildx build --platform linux/amd64 -t {{.FRONTEND}}:latest --output type=docker
+      - echo "📦 Save tar"
+      - docker save -o ./deploy/{{.BACKEND}}.tar {{.BACKEND}}:latest
+      #- docker save -o ./deploy/{{.FRONTEND}}.tar {{.FRONTEND}}:latest
+  push:
+    desc: Сохранение и отправка образов на VPS
+    cmds:
+      - echo "📤 Copy to VPS"
+      - rsync -avzP ./deploy/{{.BACKEND}}.tar {{.VPS}}:/root/
+      #- rsync -avzP ./deploy/{{.FRONTEND}}.tar.tar rwave:/root/
+      - rsync -avzP ./deploy/.env {{.VPS}}:/root/
+      - rsync -avzP ./deploy/docker-compose.yml {{.VPS}}:/root/
+
+  load:
+    desc: Загрузка и запуск compose на VPS
+    cmds:
+      - echo "📥 Загружаем образы на VPS"
+      - ssh {{.VPS}} "docker load -i {{.BACKEND}}.tar"
+     # - ssh {{.VPS}} "docker load -i {{.FRONTEND}}.tar"
+
+  compose-up:
+    desc: vps compose up
+    cmds:
+      - echo "🔁 Запускаем compose"
+      - ssh {{.VPS}} "docker compose up -d"
+      - ssh {{.VPS}} "docker compose ps"
+
+  compose-down:
+    desc: vps compose down
+    cmds:
+      - ssh {{.VPS}} "docker compose down -v"
+
+  logs-backend:
+    desc: Смотреть логи backend на VPS
+    cmds:
+      - ssh {{.VPS}} "cd /root && docker compose logs -f backend"
+
+  logs-frontend:
+    desc: Смотреть логи frontend на VPS
+    cmds:
+      - ssh {{.VPS}} "cd /root && docker compose logs -f frontend"
+
+  logs:
+    desc: Смотреть логи backend и frontend на VPS
+    cmds:
+      - ssh {{.VPS}} "cd /root && docker compose logs -f backend frontend"
+
+  clean:
+    desc: Удаление временных файлов
+    cmds:
+      - echo "🧹 Clean"
+      - rm -f ./deploy/*.tar
+
+  sessions:
+    desc: Копирование сессии на впс
+    cmds:
+      - rsync -avzP ./deploy/session {{.VPS}}:/root/
+
+  deploy:
+    desc: Полный деплой (build → push → deploy → clean)
+    cmds:
+      - task: build
+      - task: push
+      - task: load
+      - task: sessions
+      - task: compose-up
+      - task: clean
+
