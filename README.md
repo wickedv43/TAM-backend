@@ -2,6 +2,68 @@
 
 Backend for Telegram advertising marketplace (TAM) — connects channel owners with advertisers via escrow-style deals. REST API for Mini App, Telegram Bot for dialogs and auto-posting, optional User Bot and TON indexer.
 
+# Fully Implemented and Working
+
+## Add Channel Flow
+
+- A channel administrator can add their channel
+- Channel statistics are fetched automatically via MTProto
+- Key channel attributes can be configured
+
+## Deal Flow
+
+- Channel discovery within the list
+- Deal initiation (post text submission)
+- Content upload via Telegram chat (with full formatting preserved)
+- Funds holding (Escrow)
+- Complete deal lifecycle with statuses (Pending, Discussion, In Progress, Awaiting Approval, Published, Completed, etc.)
+- Deal details available across all deal-related screens
+- Communication between parties via Telegram chat
+- Publication time selection and agreement
+- Automatic post publishing
+- Automatic checks ensuring no posts were published after the ad within the required time window, and verifying the ad post was not deleted or edited
+- Notifications for all deal status updates via Telegram chat
+
+## Wallet / Crypto
+
+- TON deposit and withdrawal functionality implemented
+- Implemented using a single mnemonic with subaccounts — each user has their own wallet address
+
+## Implemented on Backend but Not Yet on Frontend
+
+- Fetching Telegram Premium user statistics
+- Post text editing during revision rounds (for MVP, a simplified frontend flow was chosen)
+
+## Not Implemented (Considered Excessive for MVP)
+
+- Brief submission instead of a ready-made post text (backend logic already supports this)
+- Brief marketplace (considered unnecessary for MVP)
+- Channel filters (all required fields already exist in the database)
+- Multi-admin channel management
+- Support for additional content formats (story, repost, native, etc.)
+
+## Limitations
+
+- Two bots were used to distribute load: MTProto for statistics, Telegram Bot API for everything else
+- A minimal withdrawal fee to cover gas costs from the user’s balance
+
+## Future Thoughts
+
+- New creative formats
+- Brief-based deal flow
+- Channel reputation system
+- More metrics and analytics, recommendations, and smart search
+- Dispute resolution mechanisms (disputes, reports)
+
+## Important Notes
+
+- This is an MVP version of the application. Some UI elements may be imperfect or incomplete, texts are placeholders, and certain features are implemented minimally for demonstration purposes
+- The project was built by a team of three. Our team is capable of delivering end-to-end products, including planning, design, frontend, backend, crypto integration, and deployment
+
+## AI%
+
+With the use of AI (primarily newer Claude models), approximately 20% of the backend code and 10% of the frontend code were written. AI was used only for lightweight tasks, including interfaces, boilerplate, and replication of existing functionality, strictly following a clearly defined prompt pipeline
+
 ## Table of Contents
 
 - [Quick Start (Local Setup)](#quick-start-local-setup)
